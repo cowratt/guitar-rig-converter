@@ -6,7 +6,7 @@ import fnmatch
 conversions = {
     "Guitar Rig 5": "Guitar Rig 6",
     "Guitar%20Rig%205": "Guitar%20Rig%206",
-    "1315522357": "1315513426"
+    "1315522357": "1315513426" # This is the "UniqueId"
 }
 
 def convert(infile):
@@ -20,7 +20,6 @@ def convert(infile):
 def recursive_search(dirpath, target_filetype="*.als", callback=convert):
     found_files = []
     for file in pathlib.Path(dirpath).iterdir():
-        # print("cecking", file)
         if file.is_dir():
             found_files += recursive_search(file, target_filetype)
         elif fnmatch.fnmatch(file.name, target_filetype):
